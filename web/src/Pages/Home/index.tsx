@@ -5,9 +5,14 @@ export function HomePage() {
 		<main>
 			<h1>Home</h1>
 
-			<div>
-				<Link to="/paste">Paste</Link>
-			</div>
+			<ul>
+				<li>
+					<Link to="/copy">Copy</Link>
+				</li>
+				<li>
+					<Link to="/paste">Paste</Link>
+				</li>
+			</ul>
 		</main>
 	);
 }
