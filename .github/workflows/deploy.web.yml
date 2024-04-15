@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy Web
 
 on:
   workflow_dispatch:
@@ -10,6 +10,9 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
 
     defaults:
       run:
@@ -28,10 +31,12 @@ jobs:
         run: npm ci
 
       - name: Configure git
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.name 'github-actions-bot'
           git config --global user.email 'support+actions@github.com'
-          git remote set-url origin https://git:${{ secrets.GITHUB_TOKEN }}@github.com/henrywoody/qrcp.git
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
 
       - name: Deploy
         run: npm run deploy
