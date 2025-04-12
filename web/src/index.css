@@ -3,3 +3,65 @@
 *::after {
 	box-sizing: border-box;
 }
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	--colors-linen: #f7ede2;
+	--colors-indigo: #08415c;
+	--colors-lighter-indigo: #00687f;
+	--colors-red: #fe4a49;
+	--colors-yellow: #f6bd60;
+
+	--general--color: var(--colors-linen);
+	--general--background-color: var(--colors-indigo);
+	--general--light-background-color: var(--colors-lighter-indigo);
+}
+
+body {
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+		"Helvetica Neue", sans-serif;
+
+	color: var(--general--color);
+	background-color: var(--general--background-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: var(--colors-red);
+
+	margin-top: 0;
+}
+
+h1 {
+	letter-spacing: 0.0625rem;
+}
+
+input,
+textarea {
+	color: var(--general--color);
+	background-color: var(--general--light-background-color);
+
+	font: inherit;
+	letter-spacing: inherit;
+	word-spacing: inherit;
+
+	padding: 0.5rem;
+	border-radius: 0.5rem;
+}
+
+textarea {
+	resize: vertical;
+}
+
+:disabled {
+	cursor: not-allowed;
+}

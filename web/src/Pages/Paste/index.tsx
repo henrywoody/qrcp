@@ -1,5 +1,7 @@
 import React from "react";
 import QRCode from "react-qr-code";
+import { Main } from "../../Components/Main";
+import styles from "./styles.module.css";
 
 export function PastePage() {
 	const [data, setData] = React.useState("");
@@ -13,12 +15,12 @@ export function PastePage() {
 	}, []);
 
 	return (
-		<main>
+		<Main>
 			<h1>Paste</h1>
 
 			{!showQR && <InputView data={data} setData={setData} onSubmit={onSubmit} />}
 			{showQR && <DisplayView data={data} onBack={onBack} />}
-		</main>
+		</Main>
 	);
 }
 
@@ -37,7 +39,7 @@ function InputView({ data, setData, onSubmit }: InputViewProps) {
 	);
 
 	return (
-		<div>
+		<div className={styles["form"]}>
 			<textarea name="" id="paste-input" cols={40} rows={10} value={data} onChange={onChange}></textarea>
 			<br />
 			<button onClick={onSubmit} disabled={!data}>

@@ -1,5 +1,7 @@
 import React from "react";
 import { Html5QrcodeScanner } from "html5-qrcode";
+import { Main } from "../../Components/Main";
+import styles from "./styles.module.css";
 
 export function CopyPage() {
 	const [data, setData] = React.useState("");
@@ -13,12 +15,12 @@ export function CopyPage() {
 	}, []);
 
 	return (
-		<main>
+		<Main>
 			<h1>Copy</h1>
 
 			{!data && <ScanView onScan={onScan} />}
 			{data && <DisplayView data={data} onBack={onBack} />}
-		</main>
+		</Main>
 	);
 }
 
@@ -43,8 +45,8 @@ function ScanView({ onScan }: ScanViewProps) {
 	}, []);
 
 	return (
-		<div>
-			<div id="scanner" style={{ width: 600 }}></div>
+		<div className={styles["scanner-container"]}>
+			<div id="scanner" className={styles["scanner"]}></div>
 		</div>
 	);
 }
