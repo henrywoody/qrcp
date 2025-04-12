@@ -14,3 +14,50 @@
 	flex-direction: column;
 	justify-content: center;
 }
+
+.display {
+	position: relative;
+}
+
+.display__action-buttons {
+	display: flex;
+	justify-content: space-between;
+}
+
+.display__action-button {
+	color: var(--colors-indigo);
+	background-color: var(--colors-yellow);
+
+	font-size: 1rem;
+	padding: 0.5rem 0.75rem;
+	border: 2px solid var(--colors-yellow);
+	border-bottom: none;
+	border-top-right-radius: 0.5rem;
+	border-top-left-radius: 0.5rem;
+}
+
+.display__action-button:not(:disabled):hover,
+.display__action-button:not(:disabled):focus {
+	color: var(--colors-yellow);
+	background-color: var(--colors-indigo);
+}
+
+.display__action-button__row {
+	display: flex;
+	align-items: center;
+	gap: 0.375rem;
+}
+
+.display__content {
+	white-space: pre-wrap; /* css-3 */
+	white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+	white-space: -pre-wrap; /* Opera 4-6 */
+	white-space: -o-pre-wrap; /* Opera 7 */
+	word-wrap: break-word; /* Internet Explorer 5.5+ */
+
+	padding: 0.75rem 1.25rem;
+	border: 2px solid var(--colors-yellow);
+	border-radius: 0.5rem;
+	border-top-right-radius: 0;
+	border-top-left-radius: 0;
+}

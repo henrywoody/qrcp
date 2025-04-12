@@ -1,4 +1,5 @@
 import React from "react";
+import { ClipboardIcon, PencilIcon } from "lucide-react";
 import QRCode from "react-qr-code";
 import { Main } from "../../Components/Main";
 import styles from "./styles.module.css";
@@ -38,13 +39,26 @@ function InputView({ data, setData, onSubmit }: InputViewProps) {
 		[setData],
 	);
 
+	const pasteFromClipboard = React.useCallback(async () => {
+		const text = await navigator.clipboard.readText();
+		setData(text);
+	}, [setData]);
+
 	return (
 		<div className={styles["form"]}>
 			<textarea name="" id="paste-input" cols={40} rows={10} value={data} onChange={onChange}></textarea>
-			<br />
-			<button onClick={onSubmit} disabled={!data}>
-				Make QR
-			</button>
+			<div className={styles["form__action-buttons"]}>
+				<button onClick={pasteFromClipboard} className={styles["form__action-button"]}>
+					<div className={styles["form__action-button__row"]}>
+						<ClipboardIcon size="1rem" />
+						<span>Paste</span>
+					</div>
+				</button>
+
+				<button onClick={onSubmit} disabled={!data} className={styles["form__action-button"]}>
+					Make QR
+				</button>
+			</div>
 		</div>
 	);
 }
@@ -56,11 +70,24 @@ type DisplayViewProps = {
 
 function DisplayView({ data, onBack }: DisplayViewProps) {
 	return (
-		<div>
+		<div className={styles["display"]}>
 			<div>
-				<button onClick={onBack}>Back</button>
+				<button onClick={onBack} className={styles["display__action-button"]}>
+					<div className={styles["display__action-button__row"]}>
+						<PencilIcon size="1rem" />
+						<span>Edit</span>
+					</div>
+				</button>
 			</div>
-			<QRCode value={data} />
+
+			<div className={styles["display__qr-code-container"]}>
+				<QRCode
+					value={data}
+					fgColor="var(--colors-linen)"
+					bgColor="var(--colors-indigo)"
+					className={styles["display__qr-code"]}
+				/>
+			</div>
 		</div>
 	);
 }

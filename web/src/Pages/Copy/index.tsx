@@ -1,5 +1,6 @@
 import React from "react";
 import { Html5QrcodeScanner } from "html5-qrcode";
+import { CopyIcon, XIcon } from "lucide-react";
 import { Main } from "../../Components/Main";
 import styles from "./styles.module.css";
 
@@ -57,12 +58,29 @@ type DisplayViewProps = {
 };
 
 function DisplayView({ data, onBack }: DisplayViewProps) {
+	const copyToClipboard = React.useCallback(() => {
+		navigator.clipboard.writeText(data);
+	}, [data]);
+
 	return (
-		<div>
-			<div>
-				<button onClick={onBack}>Back</button>
+		<div className={styles["display"]}>
+			<div className={styles["display__action-buttons"]}>
+				<button onClick={copyToClipboard} className={styles["display__action-button"]}>
+					<div className={styles["display__action-button__row"]}>
+						<CopyIcon size="1rem" />
+						<span>Copy</span>
+					</div>
+				</button>
+
+				<button onClick={onBack} className={styles["display__action-button"]}>
+					<div className={styles["display__action-button__row"]}>
+						<XIcon size="1rem" />
+						<span>Clear</span>
+					</div>
+				</button>
 			</div>
-			<p>{data}</p>
+
+			<div className={styles["display__content"]}>{data}</div>
 		</div>
 	);
 }
