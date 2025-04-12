@@ -1,6 +1,7 @@
 import React from "react";
 import { Html5QrcodeScanner } from "html5-qrcode";
 import { CopyIcon, XIcon } from "lucide-react";
+import { BackLink } from "../../Components/BackLink";
 import { Main } from "../../Components/Main";
 import styles from "./styles.module.css";
 
@@ -17,7 +18,10 @@ export function CopyPage() {
 
 	return (
 		<Main>
-			<h1>Copy</h1>
+			<div className={styles["heading"]}>
+				<BackLink className={styles["heading__back-link"]} />
+				<h1>Copy</h1>
+			</div>
 
 			{!data && <ScanView onScan={onScan} />}
 			{data && <DisplayView data={data} onBack={onBack} />}

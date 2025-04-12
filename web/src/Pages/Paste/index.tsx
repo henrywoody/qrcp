@@ -1,6 +1,7 @@
 import React from "react";
 import { ClipboardIcon, PencilIcon } from "lucide-react";
 import QRCode from "react-qr-code";
+import { BackLink } from "../../Components/BackLink";
 import { Main } from "../../Components/Main";
 import styles from "./styles.module.css";
 
@@ -17,7 +18,10 @@ export function PastePage() {
 
 	return (
 		<Main>
-			<h1>Paste</h1>
+			<div className={styles["heading"]}>
+				<BackLink className={styles["heading__back-link"]} />
+				<h1>Paste</h1>
+			</div>
 
 			{!showQR && <InputView data={data} setData={setData} onSubmit={onSubmit} />}
 			{showQR && <DisplayView data={data} onBack={onBack} />}

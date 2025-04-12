@@ -1,3 +1,19 @@
+.heading {
+	margin-bottom: 1.25rem;
+
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.heading h1 {
+	margin: 0;
+}
+
+.heading__back-link {
+	color: var(--colors-red);
+}
+
 .form {
 	width: 100%;
 }
