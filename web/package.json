@@ -8,7 +8,7 @@
 		"build": "tsc && vite build",
 		"lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
 		"preview": "vite preview",
-		"predeploy": "npm run build && cp CNAME ./dist",
+		"predeploy": "npm run build && cp ./dist/index.html ./dist/404.html && cp CNAME ./dist",
 		"deploy": "gh-pages -d dist"
 	},
 	"dependencies": {
