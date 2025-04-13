@@ -73,9 +73,23 @@ type DisplayViewProps = {
 };
 
 function DisplayView({ data, onBack }: DisplayViewProps) {
+	React.useEffect(() => {
+		// The CSS unit `cqh` only works if the container has a fixed height (specifically, won't work if the height is
+		// defined with `flex-grow` in a flex parent). So this fixes the height of the body and other ancestors and
+		// makes `cqh` work.
+		// This is really only necessary because the scanner library used on the Copy page doesn't seem pick up on
+		// inverted-colored QR codes (linen foreground and indigo background), which was what I wanted initially, so
+		// we need a quiet zone. If that library is replaced (or if the QR code library is updated/replaced to support a
+		// quiet zone) then this styling can be removed.
+		document.body.classList.add("body--window-height");
+		return () => {
+			document.body.classList.remove("body--window-height");
+		};
+	}, []);
+
 	return (
 		<div className={styles["display"]}>
-			<div>
+			<div className={styles["display__action-buttons"]}>
 				<button onClick={onBack} className={styles["display__action-button"]}>
 					<div className={styles["display__action-button__row"]}>
 						<PencilIcon size="1rem" />
@@ -85,12 +99,14 @@ function DisplayView({ data, onBack }: DisplayViewProps) {
 			</div>
 
 			<div className={styles["display__qr-code-container"]}>
-				<QRCode
-					value={data}
-					fgColor="var(--colors-linen)"
-					bgColor="var(--colors-indigo)"
-					className={styles["display__qr-code"]}
-				/>
+				<div className={styles["display__qr-code__background"]}>
+					<QRCode
+						value={data}
+						fgColor="var(--colors-indigo)"
+						bgColor="var(--colors-linen)"
+						className={styles["display__qr-code"]}
+					/>
+				</div>
 			</div>
 		</div>
 	);

@@ -30,6 +30,15 @@ body {
 	background-color: var(--general--background-color);
 }
 
+.body--window-height {
+	height: 100dvh;
+}
+
+.body--window-height #root,
+.body--window-height main {
+	height: 100%;
+}
+
 h1,
 h2,
 h3,
