@@ -1,0 +1,25 @@
+.scanner img {
+	filter: invert(1);
+}
+
+.scanner button,
+.scanner #html5-qrcode-anchor-scan-type-change {
+	font-weight: 600;
+	font-size: 1rem;
+	padding: 0.5rem 0.75rem;
+	border-radius: 0.5rem;
+	border: none;
+	display: inline-block;
+}
+
+.scanner button {
+	color: var(--colors-indigo);
+	background-color: var(--colors-yellow);
+}
+
+.scanner #html5-qrcode-anchor-scan-type-change {
+	color: var(--colors-linen);
+	background-color: var(--colors-lighter-indigo);
+	text-decoration: none !important;
+	margin-top: 1rem;
+}

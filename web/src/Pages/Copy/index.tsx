@@ -4,6 +4,7 @@ import { CopyIcon, XIcon } from "lucide-react";
 import { BackLink } from "../../Components/BackLink";
 import { Main } from "../../Components/Main";
 import styles from "./styles.module.css";
+import "./scanner.css";
 
 export function CopyPage() {
 	const [data, setData] = React.useState("");
@@ -29,6 +30,8 @@ export function CopyPage() {
 	);
 }
 
+const scannerID = "scanner";
+
 type ScanViewProps = {
 	onScan: (data: string) => void;
 };
@@ -41,7 +44,7 @@ function ScanView({ onScan }: ScanViewProps) {
 
 		const onScanFailure = () => {};
 
-		const scanner = new Html5QrcodeScanner("scanner", { fps: 10, qrbox: { width: 250, height: 250 } }, false);
+		const scanner = new Html5QrcodeScanner(scannerID, { fps: 10, qrbox: { width: 250, height: 250 } }, false);
 		scanner.render(onScanSuccess, onScanFailure);
 
 		return () => {
@@ -51,7 +54,7 @@ function ScanView({ onScan }: ScanViewProps) {
 
 	return (
 		<div className={styles["scanner-container"]}>
-			<div id="scanner" className={styles["scanner"]}></div>
+			<div id={scannerID} className={styles["scanner"] + " scanner"}></div>
 		</div>
 	);
 }
