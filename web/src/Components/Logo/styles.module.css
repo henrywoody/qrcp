@@ -1,0 +1,33 @@
+.lockup {
+	display: inline-flex;
+	align-items: center;
+	gap: 9px;
+}
+
+.lockup__icon {
+	width: 32px;
+	height: 32px;
+	flex-shrink: 0;
+}
+
+.lockup__name {
+	font-family: var(--font-display);
+	font-size: 21px;
+	font-weight: 800;
+	letter-spacing: -0.02em;
+}
+
+@media (min-width: 900px) {
+	.lockup {
+		gap: 12px;
+	}
+
+	.lockup__icon {
+		width: 44px;
+		height: 44px;
+	}
+
+	.lockup__name {
+		font-size: 28px;
+	}
+}

@@ -10,67 +10,112 @@ body {
 	padding: 0;
 }
 
-html {
-	--colors-linen: #f7ede2;
-	--colors-indigo: #08415c;
-	--colors-lighter-indigo: #00687f;
-	--colors-red: #fe4a49;
-	--colors-yellow: #f6bd60;
+:root {
+	--colors-ink: #121212;
+	--colors-lilac: #eee8ff;
+	--colors-bubblegum: #ff8fcf;
+	--colors-lemon: #ffe14d;
+	--colors-mint: #6ef0b5;
+	--colors-periwinkle: #8fa2ff;
+	--colors-white: #ffffff;
+	--colors-focus: #3b5bff;
 
-	--general--color: var(--colors-linen);
-	--general--background-color: var(--colors-indigo);
-	--general--light-background-color: var(--colors-lighter-indigo);
+	--border: 3px solid var(--colors-ink);
+
+	--font-display: "Unbounded", ui-rounded, system-ui, sans-serif;
+	--font-body: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+	color-scheme: light;
 }
 
 body {
-	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
-		"Helvetica Neue", sans-serif;
+	font-family: var(--font-body);
+	color: var(--colors-ink);
+	background-color: var(--colors-lilac);
 
-	color: var(--general--color);
-	background-color: var(--general--background-color);
-}
-
-.body--window-height {
-	height: 100dvh;
-}
-
-.body--window-height #root,
-.body--window-height main {
-	height: 100%;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-tap-highlight-color: transparent;
 }
 
 h1,
 h2,
-h3,
-h4,
-h5,
-h6 {
-	color: var(--colors-red);
-
-	margin-top: 0;
+h3 {
+	margin: 0;
+	font-family: var(--font-display);
+	font-weight: 800;
 }
 
-h1 {
-	letter-spacing: 0.0625rem;
+p {
+	margin: 0;
 }
 
+button,
 input,
 textarea {
-	color: var(--general--color);
-	background-color: var(--general--light-background-color);
-
 	font: inherit;
-	letter-spacing: inherit;
-	word-spacing: inherit;
-
-	padding: 0.5rem;
-	border-radius: 0.5rem;
+	color: inherit;
 }
 
-textarea {
-	resize: vertical;
+:focus-visible {
+	outline: 3px solid var(--colors-focus);
+	outline-offset: 3px;
+}
+
+::selection {
+	background-color: var(--colors-lemon);
 }
 
 :disabled {
 	cursor: not-allowed;
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+/*
+ * Pressable: the "keycap" interaction shared by every button and card. Set `--shadow-x` / `--shadow-y` to the
+ * element's hard-shadow offset (defaults: 0px / 4px); hovering lifts it a little, pressing pushes it flat onto its
+ * shadow. The defaults live in the `var()` fallbacks so component styles can set the offsets regardless of CSS order.
+ */
+.pressable {
+	box-shadow: var(--shadow-x, 0px) var(--shadow-y, 4px) 0 var(--colors-ink);
+	cursor: pointer;
+	transition:
+		transform 90ms ease-out,
+		box-shadow 90ms ease-out;
+}
+
+@media (hover: hover) {
+	.pressable:hover:not(:disabled) {
+		transform: translate(calc(var(--shadow-x, 0px) / -2), calc(var(--shadow-y, 4px) / -2));
+		box-shadow: calc(var(--shadow-x, 0px) * 1.5) calc(var(--shadow-y, 4px) * 1.5) 0 var(--colors-ink);
+	}
+}
+
+.pressable:active:not(:disabled) {
+	transform: translate(var(--shadow-x, 0px), var(--shadow-y, 4px));
+	box-shadow: 0 0 0 var(--colors-ink);
+}
+
+.pressable:disabled {
+	opacity: 0.45;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		transition: none !important;
+		animation: none !important;
+	}
 }

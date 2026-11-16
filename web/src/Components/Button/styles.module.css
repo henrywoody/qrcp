@@ -1,0 +1,94 @@
+.button {
+	--tone: var(--colors-white);
+
+	min-width: 0;
+	height: 50px;
+	padding: 0 14px;
+	border: var(--border);
+	border-radius: 14px;
+
+	color: var(--colors-ink);
+	background-color: var(--tone);
+
+	font-size: 15px;
+	font-weight: 800;
+	white-space: nowrap;
+
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+}
+
+.button__icon {
+	display: flex;
+}
+
+.button__icon svg {
+	width: 17px;
+	height: 17px;
+	stroke-width: 2.6;
+}
+
+.button--large {
+	--shadow-y: 5px;
+
+	height: 54px;
+	border-radius: 16px;
+	font-size: 16px;
+}
+
+.button--block {
+	width: 100%;
+}
+
+.button--white {
+	--tone: var(--colors-white);
+}
+
+.button--bubblegum {
+	--tone: var(--colors-bubblegum);
+}
+
+.button--mint {
+	--tone: var(--colors-mint);
+}
+
+.button--lemon {
+	--tone: var(--colors-lemon);
+}
+
+.button--periwinkle {
+	--tone: var(--colors-periwinkle);
+}
+
+.button--ghost {
+	height: 44px;
+	border: none;
+	background: transparent;
+	cursor: pointer;
+	text-decoration: underline transparent 2px;
+	text-underline-offset: 4px;
+	transition: text-decoration-color 90ms ease-out;
+}
+
+.button--ghost:hover {
+	text-decoration-color: currentColor;
+}
+
+@media (min-width: 900px) {
+	.button {
+		height: 56px;
+		padding: 0 24px;
+		font-size: 16px;
+	}
+
+	.button--large {
+		height: 60px;
+		font-size: 17px;
+	}
+
+	.button--ghost {
+		height: 48px;
+	}
+}
