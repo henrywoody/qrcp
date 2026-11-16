@@ -1,0 +1,32 @@
+{
+	"id": "/",
+	"name": "qrcp: QR copy & paste",
+	"short_name": "qrcp",
+	"description": "Copy and paste text between devices with a QR code. No sign-up, nothing uploaded.",
+	"start_url": "/",
+	"scope": "/",
+	"display": "standalone",
+	"background_color": "#eee8ff",
+	"theme_color": "#eee8ff",
+	"categories": ["utilities", "productivity"],
+	"icons": [
+		{ "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+		{ "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+		{ "src": "/icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+		{ "src": "/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+	],
+	"shortcuts": [
+		{
+			"name": "Paste",
+			"description": "Turn text into a QR code",
+			"url": "/paste",
+			"icons": [{ "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+		},
+		{
+			"name": "Copy",
+			"description": "Scan a code to grab its text",
+			"url": "/copy",
+			"icons": [{ "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+		}
+	]
+}
